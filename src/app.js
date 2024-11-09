@@ -11,7 +11,7 @@ import followRoutes from './routes/followRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 
 
-dotenv.config();
+
 
 export const cloud = cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
