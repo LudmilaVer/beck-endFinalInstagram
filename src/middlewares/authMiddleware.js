@@ -22,7 +22,7 @@ const authMiddleware = async (req, res, next) => {
     if (!user) {
       return res.status(401).json({ message: "Пользователь не найден." });
     }
-
+console.log(user)
     // Сохранение пользователя в запросе для дальнейшего использования
     req.user = user;
     next();

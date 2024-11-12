@@ -6,10 +6,12 @@ import multer from 'multer';
 const storage = multer.memoryStorage(); // Сохраняем файл в памяти
 const upload = multer({ storage });
 
+
 // Получение профиля конкретного пользователя по его ID
 export const getCurrentUserProfile = async (req, res) => {
   try {
     const user = req.user;
+
     if (!user) {
       return res.status(404).json({ message: 'Пользователь не найден' });
     }
