@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
-import connectDB from './config/db.js';
-import app from './app.js';
-import { Server } from 'socket.io';
-import { messageSocketHandler, authenticateSocket } from './routes/messageRoutes.js';
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import app from "./app.js";
+import { Server } from "socket.io";
+import { messageSocketHandler, authenticateSocket } from "./routes/messageRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -15,7 +15,7 @@ const server = app.listen(PORT, () => {
 // Инициализация WebSocket сервера
 const io = new Server(server, {
   cors: {
-    origin: '*', // Разрешить подключения с любого источника
+    origin: "*", // Разрешить подключения с любого источника
   },
 });
 
@@ -25,8 +25,8 @@ io.use((socket, next) => {
 });
 
 // Обработка WebSocket-соединений
-io.on('connection', (socket) => {
-  console.log('Новое WebSocket соединение');
+io.on("connection", (socket) => {
+  console.log("Новое WebSocket соединение");
 
   // Подключаем обработчики сообщений
   messageSocketHandler(socket, io);

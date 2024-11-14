@@ -1,25 +1,18 @@
 import express from 'express';
-import { 
-  getUserProfile, 
-  getCurrentUserProfile, 
-  updateUserProfile, 
-  uploadProfileImage, 
-  getAllUsers 
+import {
+  getUserProfile,
+  getCurrentUserProfile,
+  updateUserProfile,
+  uploadProfileImage,
+  getAllUsers,
 } from '../controllers/userController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-// Получение профиля конкретного пользователя по ID
-router.get('/:userId', getUserProfile);
-
-// Получение профиля текущего пользователя
 router.get('/current', authMiddleware, getCurrentUserProfile);
-
-// Получение всех пользователей
-router.get('/', getAllUsers);
-
-// Обновление профиля текущего пользователя с загрузкой изображения
+router.get('/:userId', getUserProfile);
 router.put('/current', authMiddleware, uploadProfileImage, updateUserProfile);
+router.get('/', getAllUsers);
 
 export default router;
